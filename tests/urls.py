@@ -5,6 +5,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('django_humble_utils.urls', namespace='django_humble_utils')),
+    url(r"^admin/", admin.site.urls),
+    url(r"^", include("django_humble_utils.urls", namespace="django_humble_utils")),
 ]

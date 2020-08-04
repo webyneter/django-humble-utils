@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 
 class DjangoHumbleUtilsConfig(AppConfig):
-    name = 'django_humble_utils'
+    name = "django_humble_utils"

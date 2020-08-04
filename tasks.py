@@ -53,7 +53,7 @@ def docs(c):
     c.run("sphinx-apidoc -o docs/ django_humble_utils")
 
     c.run("sphinx-build -E -b html docs docs/_build")
-    open_browser(path='docs/_build/html/index.html')
+    open_browser(path="docs/_build/html/index.html")
 
 
 @task
@@ -89,21 +89,26 @@ def lint(c):
     c.run("flake8 django-humble-utils tests")
 
 
-@task(help={'bumpsize': 'Bump either for a "feature" or "breaking" change'})
-def release(c, bumpsize=''):
+@task(help={"bumpsize": 'Bump either for a "feature" or "breaking" change'})
+def release(c, bumpsize=""):
     """
     Package and upload a release
     """
     clean(c)
     if bumpsize:
-        bumpsize = '--' + bumpsize
+        bumpsize = "--" + bumpsize
 
     c.run("bumpversion {bump} --no-input".format(bump=bumpsize))
 
     import django_humble_utils
+
     c.run("python setup.py sdist bdist_wheel")
     c.run("twine upload dist/*")
 
-    c.run('git tag -a {version} -m "New version: {version}"'.format(version=django_humble_utils.__version__))
+    c.run(
+        'git tag -a {version} -m "New version: {version}"'.format(
+            version=django_humble_utils.__version__
+        )
+    )
     c.run("git push --tags")
     c.run("git push origin master")

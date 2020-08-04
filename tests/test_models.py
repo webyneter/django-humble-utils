@@ -14,7 +14,6 @@ from django_humble_utils import models
 
 
 class TestDjango_humble_utils(TestCase):
-
     def setUp(self):
         pass
 

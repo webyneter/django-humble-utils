@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from . import views
 
 
-app_name = 'django_humble_utils'
+app_name = "django_humble_utils"
 urlpatterns = [
-    url(r'', TemplateView.as_view(template_name="base.html")),
-    ]
+    url(r"", TemplateView.as_view(template_name="base.html")),
+]
